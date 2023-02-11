@@ -43,6 +43,10 @@ pipeline {
                     input message: 'Sudah selesai menggunakan Pyinstaller? (Klik "Proceed" untuk mengakhiri)' 
                 }
             }
+            steps {
+                script {
+                    sleep time: 1, unit: 'MINUTES'
+                }
             post {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals" 
