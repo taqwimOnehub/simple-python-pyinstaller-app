@@ -30,6 +30,12 @@ pipeline {
                 }
             }
         }
+
+        stage('Manual Approval') {
+            steps {
+                input message: 'Lanjutkan ke tahap Deploy?', id: 'deployment_approval', ok: 'Proceed', parameters: [choice(choices: ['Abort'], description: 'Choose one', name: 'deployment_choice')]
+            }
+        }
         stage('Deploy') { 
             agent any
             environment { 
