@@ -39,7 +39,8 @@ pipeline {
             steps {
                 dir(path: env.BUILD_ID) { 
                     unstash(name: 'compiled-results') 
-                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'" 
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
+                    input message: 'Sudah selesai menggunakan Pyinstaller? (Klik "Proceed" untuk mengakhiri)' 
                 }
             }
             post {
